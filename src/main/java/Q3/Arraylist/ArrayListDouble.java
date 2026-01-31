@@ -1,7 +1,7 @@
-package org.Nurel.Q3.Arraylist;
+package Q3.Arraylist;
 
 public class ArrayListDouble {
-    private Double[] array;
+    private final  Double[] array;
     private int size;
 
 

@@ -1,4 +1,4 @@
-package org.Nurel.Q3.Arraylist;
+package Q3.Arraylist;
 
 public class Main {
     public static void main(String[] args) {

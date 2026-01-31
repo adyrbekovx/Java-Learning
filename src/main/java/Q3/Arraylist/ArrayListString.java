@@ -1,14 +1,13 @@
-package org.Nurel.Q3.Arraylist;
+package Q3.Arraylist;
 
 public class ArrayListString {
-    private String[] array;
+    private final String[] array;
     private int size;
-    private int capacity;
+
 
     public ArrayListString(int capacity) {
         this.array = new String[capacity];
         this.size = 0;
-        this.capacity = capacity;
     }
 
     public void add(String element) {

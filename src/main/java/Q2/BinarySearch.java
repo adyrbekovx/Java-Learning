@@ -1,4 +1,4 @@
-package org.Nurel.Q2;
+package Q2;
 
 public class BinarySearch {
 
@@ -9,26 +9,24 @@ public class BinarySearch {
         int[] myArray = {1,2,4,5,7,9,11,14,17,20,23}; // четное/нечетное число элементов.
         int target = 14;
 
-        int result = biSearch(myArray,target);
+        int result = binarySearch(myArray,target);
 
         System.out.println(result);
     }
 
-    public static int biSearch(int[] array, int target){
-        int low = 0;
-        int high = array.length - 1;
+    public static int binarySearch(int[] array, int target){
+        int left = 0;
+        int right = array.length - 1;
 
-        while (low <= high){
-            int mid =  (low + high) / 2;
+        while (left <= right){
+            int mid =  (left + right) / 2;
 
-            int guess = array[mid];
-            if (target == guess){
+            if (array[mid] == target){
                 return mid;
-            }
-            if (guess < target){
-                low = mid + 1;
+            } else if (array[mid] < target){
+                left = mid + 1;
             } else {
-                 high = mid - 1;
+                 right = mid - 1;
             }
         }
         return -1;

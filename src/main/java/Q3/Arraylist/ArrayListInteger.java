@@ -1,14 +1,12 @@
-package org.Nurel.Q3.Arraylist;
+package Q3.Arraylist;
 
 public class ArrayListInteger {
-    private Integer[] array;
+    private final Integer[] array;
     private int size;
-    private int capacity;
 
     public ArrayListInteger(int capacity) {
         this.array = new Integer[capacity];
         this.size = 0;
-        this.capacity = capacity;
     }
 
     public void add(int element){
@@ -20,7 +18,7 @@ public class ArrayListInteger {
     }
 
     public Integer remove(int index){
-        Integer removedEl = array[index];
+        Integer removedElement = array[index];
 
         for (int i = index; i < size -1; i++) {
             array[i] = array[i+1];
@@ -28,7 +26,7 @@ public class ArrayListInteger {
         array[size - 1] = null;
         size--;
 
-        return removedEl;
+        return removedElement;
     }
 
     public int size(){
