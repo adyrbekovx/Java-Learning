@@ -36,6 +36,7 @@ public class LinkedListDouble {
         }
         size++;
     }
+
     public Double get(int index) {
         LinkedListDouble.Node current = head;
         for (int i = 0; i < index; i++) {
@@ -43,6 +44,7 @@ public class LinkedListDouble {
         }
         return current.element;
     }
+
     public Double remove(int index) {
         LinkedListDouble.Node toDelete = head;
         for (int i = 0; i < index; i++) {
@@ -66,6 +68,7 @@ public class LinkedListDouble {
         size--;
         return element;
     }
+
     public int size(){
         return size;
     }

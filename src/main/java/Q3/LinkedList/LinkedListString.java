@@ -43,6 +43,7 @@ public class LinkedListString {
         }
         return current.element;
     }
+
     public String remove(int index) {
         LinkedListString.Node toDelete = head;
         for (int i = 0; i < index; i++) {
@@ -66,6 +67,7 @@ public class LinkedListString {
         size--;
         return element;
     }
+
     public int size(){
         return size;
     }

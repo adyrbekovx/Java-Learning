@@ -36,13 +36,15 @@ public class LinkedListInteger {
         }
         size++;
     }
+
     public Integer get(int index) {
-        Node current = head;
+        Node current = head;  // Временный указатель
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
         return current.element;
     }
+
     public Integer remove(int index) {
         Node toDelete = head;
         for (int i = 0; i < index; i++) {
@@ -66,6 +68,7 @@ public class LinkedListInteger {
         size--;
         return element;
     }
+
     public int size(){
         return size;
     }
