@@ -37,19 +37,9 @@ public class LinkedListString {
         size++;
     }
     public String get(int index) {
-        Node current;
-
-        if (index < size / 2) {
-            current = head;
-            for (int i = 0; i < index; i++) {
-                current = current.next;
-            }
-            return current.element;
-        } else {
-            current = tail;
-            for (int i = size - 1; i > index; i--) {
-                current = current.prev;
-            }
+        LinkedListString.Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
         }
         return current.element;
     }
