@@ -44,17 +44,9 @@ public class LinkedListString {
         return current.element;
     }
     public String remove(int index) {
-        Node toDelete;
-        if (index < size / 2) {
-            toDelete = head;
-            for (int i = 0; i < index; i++) {
-                toDelete = toDelete.next;
-            }
-        } else {
-            toDelete = tail;
-            for (int i = size - 1; i > index; i--) {
-                toDelete = toDelete.prev;
-            }
+        LinkedListString.Node toDelete = head;
+        for (int i = 0; i < index; i++) {
+            toDelete = toDelete.next;
         }
 
         String element = toDelete.element;

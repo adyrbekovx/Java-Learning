@@ -44,17 +44,9 @@ public class LinkedListDouble {
         return current.element;
     }
     public Double remove(int index) {
-        Node toDelete;
-        if (index < size / 2) {
-            toDelete = head;
-            for (int i = 0; i < index; i++) {
-                toDelete = toDelete.next;
-            }
-        } else {
-            toDelete = tail;
-            for (int i = size - 1; i > index; i--) {
-                toDelete = toDelete.prev;
-            }
+        LinkedListDouble.Node toDelete = head;
+        for (int i = 0; i < index; i++) {
+            toDelete = toDelete.next;
         }
 
         Double element = toDelete.element;
