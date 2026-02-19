@@ -15,7 +15,7 @@ public class Main {
 
 
         System.out.println("Первый вызов. Емкость: " + array.getCapacity());
-        array.trimSize(9);
+        array.trimToSize(9);
         System.out.println("Количество элементов: " + array.size());
         System.out.println("Второй вызов. Емкость: " + array.getCapacity());
         array.add(29);
@@ -26,7 +26,7 @@ public class Main {
         System.out.println(array.remove(1)); // удалил элемент 2
         System.out.println(array.remove(4)); // удалил элемент 6
         array.list();
-        array.trimSize(10);
+        array.trimToSize(10);
         System.out.println("Четвертый вызов. Емкость: " + array.getCapacity());
 
     }
