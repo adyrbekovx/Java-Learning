@@ -51,7 +51,7 @@ public class ArrayListInteger {
         return removedElement;
     }
 
-    public void trimSize(int size) {
+    public void trimToSize(int size) {
         // уменьшить емкость до количества элементов в массиве
         Integer[] newArray = new Integer[size];
 
