@@ -38,7 +38,7 @@ public class LinkedListInteger {
     }
 
     public Integer get(int index) {
-        Node current = head;
+        Node current = head;  // Временный указатель
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
