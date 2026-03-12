@@ -24,10 +24,11 @@ public class Main {
         System.out.println("Количество элементов: " + array.size());
         System.out.println("Третий вызов. Емкость: " + array.getCapacity());
         System.out.println(array.remove(1)); // удалил элемент 2
-        System.out.println(array.remove(4)); // удалил элемент 6
+        System.out.println(array.remove(4)); // удалил элемент 12
         array.list();
         array.trimToSize(10);
         System.out.println("Четвертый вызов. Емкость: " + array.getCapacity());
+
 
     }
 }
