@@ -1,4 +1,4 @@
-package Q5;
+package Q5.QueueArrayList;
 
 import java.util.NoSuchElementException;
 
@@ -12,6 +12,9 @@ public class QueueIntegerArrayList {
     }
 
     public void add(Integer element){
+        if (element == null) {
+            throw new IllegalArgumentException("Null elements are not allowed");
+        }
         if (size == array.length) {
             Integer[] newArray = new Integer[array.length * 2];
             for (int i = 0; i < size; i++) {
@@ -35,7 +38,7 @@ public class QueueIntegerArrayList {
             array[i - 1] = array[i];    // ЭТО НЕПРАВИЛЬНО!!!!!
         }
         size--;
-
+        array[size] = null;
         return firstElement;
     }
 

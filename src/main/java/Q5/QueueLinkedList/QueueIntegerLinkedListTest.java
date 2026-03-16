@@ -1,4 +1,4 @@
-package Q5;
+package Q5.QueueLinkedList;
 
 import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
