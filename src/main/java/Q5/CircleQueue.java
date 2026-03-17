@@ -20,8 +20,6 @@ public class CircleQueue {
             Integer[] newArray = new Integer[array.length * 2];
 
             this.array = newArray;
-            this.head = 0;
-            this.tail = size;
         }
 
         array[tail] = element;
