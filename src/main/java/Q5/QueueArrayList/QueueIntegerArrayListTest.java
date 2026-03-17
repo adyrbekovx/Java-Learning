@@ -65,4 +65,65 @@ public class QueueIntegerArrayListTest {
         assertEquals(2, queue.getSize());
         assertEquals(200, queue.remove());
     }
+
+    @Test
+    @DisplayName("Тест на 'прокачку' очереди (многократный сдвиг)")
+    void testShiftingLogic() {
+        // Начальная емкость 10
+        QueueIntegerArrayList queue = new QueueIntegerArrayList(10);
+
+        // Добавляем и удаляем элементы многократно.
+        // Если внутри используется сдвиг массива влево при каждом remove,
+        // этот тест проверит, не ломается ли индекс последнего элемента.
+        for (int i = 0; i < 100; i++) {
+            queue.add(i);
+            assertEquals(i, queue.remove(), "Ошибка на итерации " + i);
+        }
+        assertEquals(0, queue.getSize());
+    }
+
+    @Test
+    @DisplayName("Тест на добавление элемента ровно в момент заполнения")
+    void testGrowthAtBoundary() {
+        int initialCapacity = 4;
+        QueueIntegerArrayList queue = new QueueIntegerArrayList(initialCapacity);
+
+        for (int i = 0; i < initialCapacity; i++) {
+            queue.add(i);
+        }
+
+        // Очередь полна. Следующий add должен вызвать расширение
+        assertDoesNotThrow(() -> queue.add(99), "Очередь должна расшириться без ошибок");
+        assertEquals(initialCapacity + 1, queue.getSize());
+
+        // Проверка, что старые данные не затерты
+        assertEquals(0, queue.peek());
+    }
+
+    @Test
+    @DisplayName("Исключения при работе с пустой очередью")
+    void testEmptyExceptions() {
+        QueueIntegerArrayList queue = new QueueIntegerArrayList(5);
+
+        // В зависимости от вашей реализации, тут может быть NoSuchElementException
+        // или IllegalStateException. Замените на нужный тип.
+        assertThrows(RuntimeException.class, queue::remove, "Удаление из пустой очереди");
+        assertThrows(RuntimeException.class, queue::peek, "Чтение из пустой очереди");
+    }
+
+    @Test
+    @DisplayName("Проверка порядка элементов после расширения")
+    void testOrderAfterExpansion() {
+        QueueIntegerArrayList queue = new QueueIntegerArrayList(2);
+        queue.add(10);
+        queue.add(20);
+
+        // Сейчас массив полон. Добавляем 3-й, вызывая resize.
+        queue.add(30);
+
+        assertEquals(10, queue.remove());
+        assertEquals(20, queue.remove());
+        assertEquals(30, queue.remove());
+        assertTrue(queue.getSize() == 0);
+    }
 }
