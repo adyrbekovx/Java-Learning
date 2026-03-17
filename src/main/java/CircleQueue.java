@@ -1,12 +1,12 @@
 import java.util.NoSuchElementException;
 
-public class Test {
+public class CircleQueue {
     private Integer[] array;
     private int size;
     private int head;
     private int tail;
 
-    public Test(int capacity) {
+    public CircleQueue(int capacity) {
         this.array = new Integer[capacity];
         this.size = 0;
         this.head = 0;
@@ -17,19 +17,12 @@ public class Test {
         if (size == array.length) {
             Integer[] newArray = new Integer[array.length * 2];
 
-            for (int i = 0; i < size; i++) {
-                newArray[i] = array[(head + i) % array.length];
-            }
-
             this.array = newArray;
             this.head = 0;
             this.tail = size;
         }
 
         array[tail] = element;
-        // Вот тут должно быть что-то
-        //
-         //
         size++;
     }
 
@@ -39,9 +32,6 @@ public class Test {
         }
         int removedElement = array[head];
 
-        // Здесь что-то
-        //
-         //
         size--;
 
         return removedElement;
