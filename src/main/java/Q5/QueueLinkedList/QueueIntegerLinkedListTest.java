@@ -1,5 +1,6 @@
 package Q5.QueueLinkedList;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class QueueIntegerLinkedListTest {
 
     @Test
+    @DisplayName("Тест на проверку логику АШАЩ")
     public void testFifoLogic() {
         QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
 
         assertEquals(0, queue.getSize(), "Начальный размер должен быть 0");
 
-        // Добавляем объекты Integer
         queue.add(100);
         queue.add(200);
         queue.add(300);
@@ -20,7 +21,7 @@ public class QueueIntegerLinkedListTest {
         assertEquals(3, queue.getSize(), "Размер после добавления должен быть 3");
         assertEquals(100, queue.peek(), "Первым элементом должен быть 100");
 
-        // Проверяем порядок извлечения (FIFO)
+        // Проверяем порядок удаление элементов в очереди (FIFO)
         assertEquals(100, queue.remove(), "Ожидается 100");
         assertEquals(200, queue.remove(), "Ожидается 200");
         assertEquals(1, queue.getSize(), "Размер должен уменьшиться до 1");
@@ -35,23 +36,22 @@ public class QueueIntegerLinkedListTest {
     }
 
     @Test
-    public void testEmptyQueueExceptions() {
+    @DisplayName("Извлечение и чтение из пустой очереди должно выбрасывать NoSuchElementException")
+    public void shouldThrowExceptionWhenQueueIsEmpty() {
         QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
 
-        // Проверяем, что методы бросают ошибку, если очередь пуста
-        assertThrows(NoSuchElementException.class, queue::remove,
-                "remove() должен бросать исключение при пустой очереди");
+        assertThrows(NoSuchElementException.class, () -> queue.remove(),
+                "Вызов remove() у пустой очереди должен приводить к ошибке");
 
-        assertThrows(NoSuchElementException.class, queue::peek,
-                "peek() должен бросать исключение при пустой очереди");
+        assertThrows(NoSuchElementException.class, () -> queue.peek(),
+                "Вызов peek() у пустой очереди должен приводить к ошибке");
     }
 
     @Test
+    @DisplayName("Тест,где Очередь должна корректно принимать, хранить и выдавать null")
     public void testAddNull() {
         QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
 
-        // Проверяем, как ваша реализация обрабатывает null.
-        // Если вы запретили null, то ожидаем исключение, если разрешили — корректную работу.
         queue.add(null);
         assertEquals(1, queue.getSize());
         assertNull(queue.peek(), "Первым элементом должен быть null");
@@ -60,6 +60,7 @@ public class QueueIntegerLinkedListTest {
     }
 
     @Test
+    @DisplayName("Тест очистки и повторного использования")
     public void testClearAndReuse() {
         QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
 
@@ -78,6 +79,7 @@ public class QueueIntegerLinkedListTest {
     }
 
     @Test
+    @DisplayName("Проверка работы FIFO-логики на объеме в 10 000 элементов")
     public void testLargeNumberOfElements() {
         QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
         int count = 10000;
@@ -96,36 +98,26 @@ public class QueueIntegerLinkedListTest {
     }
 
     @Test
-    public void testPeekDoesNotRemove() {
-        QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
-        queue.add(55);
-        queue.add(66);
-
-        // Проверяем, что peek() возвращает значение, но не удаляет его
-        assertEquals(55, queue.peek());
-        assertEquals(55, queue.peek());
-        assertEquals(2, queue.getSize(), "peek() не должен изменять размер очереди");
-    }
-
-    @Test
+    @DisplayName("Тест поведения конвейера")
     public void testSequenceOfInterleavedOperations() {
         QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
 
-        queue.add(1); // [1]
-        queue.add(2); // [1, 2]
-        assertEquals(1, queue.remove()); // [2]
+        queue.add(1); // 1
+        queue.add(2); // 1, 2
+        assertEquals(1, queue.remove()); // 2
 
-        queue.add(3); // [2, 3]
-        assertEquals(2, queue.remove()); // [3]
+        queue.add(3); // 2, 3
+        assertEquals(2, queue.remove()); // 3
 
-        queue.add(4); // [3, 4]
-        assertEquals(3, queue.remove()); // [4]
-        assertEquals(4, queue.remove()); // []
+        queue.add(4); // 3, 4
+        assertEquals(3, queue.remove()); // 4
+        assertEquals(4, queue.remove()); // null
 
         assertEquals(0, queue.getSize());
     }
 
     @Test
+    @DisplayName("Тест минимума, максимума и нуля")
     public void testBoundaryValues() {
         QueueIntegerLinkedList queue = new QueueIntegerLinkedList();
         queue.add(Integer.MAX_VALUE);

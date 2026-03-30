@@ -33,17 +33,18 @@ public class QueueIntegerArrayListTest {
 
         queue.add(1);
         queue.add(2);
-        assertEquals(1, queue.remove()); // Остался [2]
+        assertEquals(1, queue.remove()); // Остался 2
 
         queue.add(3);
         queue.add(4);
-        assertEquals(2, queue.remove()); // Остались [3, 4]
+        assertEquals(2, queue.remove()); // Остались 3, 4
 
         assertEquals(2, queue.getSize());
         assertEquals(3, queue.peek());
     }
 
     @Test
+    @DisplayName("Попытка добавить null в очередь должна приводить к ошибке")
     void testNullElement() {
         QueueIntegerArrayList queue = new QueueIntegerArrayList(2);
         assertThrows(IllegalArgumentException.class, () -> queue.add(null));
@@ -105,10 +106,8 @@ public class QueueIntegerArrayListTest {
     void testEmptyExceptions() {
         QueueIntegerArrayList queue = new QueueIntegerArrayList(5);
 
-        // В зависимости от вашей реализации, тут может быть NoSuchElementException
-        // или IllegalStateException. Замените на нужный тип.
-        assertThrows(RuntimeException.class, queue::remove, "Удаление из пустой очереди");
-        assertThrows(RuntimeException.class, queue::peek, "Чтение из пустой очереди");
+        assertThrows(RuntimeException.class, () -> queue.remove(), "Удаление из пустой очереди");
+        assertThrows(RuntimeException.class, () -> queue.peek(), "Чтение из пустой очереди");
     }
 
     @Test
