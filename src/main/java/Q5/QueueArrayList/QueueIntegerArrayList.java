@@ -35,7 +35,7 @@ public class QueueIntegerArrayList {
         int firstElement = array[0];
 
         for (int i = 1; i < size; i++) {
-            array[i - 1] = array[i];    // ЭТО НЕПРАВИЛЬНО!!!!!
+            array[i - 1] = array[i];
         }
         size--;
         array[size] = null;
