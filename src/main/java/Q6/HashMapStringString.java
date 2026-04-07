@@ -32,7 +32,7 @@ public class HashMapStringString {
         }
 
         int hash = key.hashCode();
-        int bucketIndex = Math.abs(hash % buckets.length);
+        int bucketIndex = hash % buckets.length;
 
         Node current = buckets[bucketIndex];
 
@@ -63,7 +63,7 @@ public class HashMapStringString {
         }
 
         int hash = key.hashCode();
-        int bucketIndex = Math.abs(hash % buckets.length);
+        int bucketIndex = hash % buckets.length;
         Node current = buckets[bucketIndex];
 
         while (current != null) {
@@ -81,7 +81,7 @@ public class HashMapStringString {
         }
 
         int hash = key.hashCode();
-        int bucketIndex = Math.abs(hash % buckets.length);
+        int bucketIndex = hash % buckets.length;
 
         Node current = buckets[bucketIndex];
         Node prev = null;

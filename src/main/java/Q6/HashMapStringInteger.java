@@ -32,7 +32,7 @@ public class HashMapStringInteger {
         }
 
         int hash = key.hashCode();
-        int bucketIndex = Math.abs(hash % buckets.length);
+        int bucketIndex = hash % buckets.length;
 
         Node current = buckets[bucketIndex];
 
