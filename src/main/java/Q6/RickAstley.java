@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class RickAstley {
     public static void main(String[] args) {
 
-        HashMap<String, Integer> text = new HashMap<>();
+        HashMapStringInteger text = new HashMapStringInteger();
 
         String song = " We're no strangers to love " +
                       " You know the rules and so do I " +
