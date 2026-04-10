@@ -1,8 +1,8 @@
-package q6;
+package q7;
 
 import java.util.Objects;
 
-public class HashMapStringInteger {
+public class SimpleHashMap {
 
     private static class Node {
         Node next;
@@ -20,21 +20,27 @@ public class HashMapStringInteger {
     private int size;
     private final Node[] buckets;
 
-    public HashMapStringInteger() {
-        buckets = new Node[7];
+    public SimpleHashMap() {
+        buckets = new Node[16];
     }
 
     public void put(String key, Integer value) {
-        // 0) Предусловия: buckets.size = 7
-        // 1) "myKey" -> hash, hash = 10
-        // 1.1) bucketIndex = hash % buckets.size, bucketIndex = 3
-        // 2) buckets[bucketIndex].appendLast(-113) -> no key duplicates
+
         if (key == null) {
             throw new IllegalArgumentException("Ключ не может быть пустым");
         }
 
+        if (size > 0.75 * buckets.length) {
+            Integer[] newBuckets = new Integer[buckets.length * 2];
+
+            int hash = key.hashCode();
+            int bucketIndex = Math.abs(hash % buckets.length);
+
+            Node current = buckets[bucketIndex];
+
+        }
+
         int hash = key.hashCode();
-        /*int bucketIndex = hash % buckets.length;*/
         int bucketIndex = Math.abs(hash % buckets.length);
 
         Node current = buckets[bucketIndex];
@@ -110,22 +116,5 @@ public class HashMapStringInteger {
 
     public int size(){
         return size;
-    }
-
-    @Override
-    public String toString() {
-        String result = "";   // ИСПОЛЬЗОВАТЬ STRING BUILDER
-        for (int i = 0; i < buckets.length; i++) {
-            Node current = buckets[i];
-            if (current == null){
-                continue; // TODO
-            } else {
-                while (current!= null){
-                    result = result + " " + current.key + "=" + current.value;
-                    current = current.next;
-                }
-            }
-        } // TODO
-        return result;
     }
 }

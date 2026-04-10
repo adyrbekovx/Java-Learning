@@ -1,6 +1,6 @@
 package q1;
 
-public class nonRecursiveFibonacci {
+public class NonRecursiveFibonacci {
     public static void main(String[] args) {
         System.out.println(nonRecursiveFibo(4));
     }

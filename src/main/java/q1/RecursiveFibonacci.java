@@ -1,6 +1,6 @@
 package q1;
 
-public class recursiveFibonacci {
+public class RecursiveFibonacci {
     public static void main(String[] args) {
         System.out.println(Recursive(5));
     }
