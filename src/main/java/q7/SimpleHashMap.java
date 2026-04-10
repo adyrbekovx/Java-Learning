@@ -31,7 +31,7 @@ public class SimpleHashMap {
         }
 
         if (size > 0.75 * buckets.length) {
-            Integer[] newBuckets = new Integer[buckets.length * 2];
+            Node[] newBuckets = new Node[buckets.length * 2];
 
             int hash = key.hashCode();
             int bucketIndex = Math.abs(hash % buckets.length);
