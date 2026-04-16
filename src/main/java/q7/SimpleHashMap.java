@@ -18,7 +18,7 @@ public class SimpleHashMap {
         }
     }
     private int size;
-    private final Node[] buckets;
+    private Node[] buckets;
 
     public SimpleHashMap() {
         buckets = new Node[16];
@@ -33,11 +33,20 @@ public class SimpleHashMap {
         if (size > 0.75 * buckets.length) {
             Node[] newBuckets = new Node[buckets.length * 2];
 
-            int hash = key.hashCode();
-            int bucketIndex = Math.abs(hash % buckets.length);
+            for (int i = 0; i < buckets.length; i++) {
+                Node current = buckets[i];
+                while (current != null) {
+                    Node nextNode = current.next;
 
-            Node current = buckets[bucketIndex];
+                    int bucketIndex = Math.abs(current.hash % newBuckets.length);
 
+                    current.next = newBuckets[bucketIndex];
+                    newBuckets[bucketIndex] = current;
+
+                    current = nextNode;
+                }
+            }
+            buckets = newBuckets;
         }
 
         int hash = key.hashCode();

@@ -34,6 +34,10 @@ public class RickAstley {
         String[] words = song.toLowerCase().split("[ ]+");
 
         for (String word: words) {
+            if (word.isEmpty()) {
+                continue;           // Пропускаем пустые строки!
+            }
+            
             Integer count = text.get(word);
 
             if (count == null) {

@@ -114,18 +114,24 @@ public class HashMapStringInteger {
 
     @Override
     public String toString() {
-        String result = "";   // ИСПОЛЬЗОВАТЬ STRING BUILDER
+        StringBuilder result = new StringBuilder();
+
+        boolean isFirst = true;
+
         for (int i = 0; i < buckets.length; i++) {
             Node current = buckets[i];
-            if (current == null){
-                continue; // TODO
-            } else {
-                while (current!= null){
-                    result = result + " " + current.key + "=" + current.value;
-                    current = current.next;
+
+            while (current != null) {
+                if (!isFirst) {
+                    result.append(", ");
                 }
+
+                result.append(current.key).append("=").append(current.value);
+
+                isFirst = false;
+                current = current.next;
             }
-        } // TODO
-        return result;
+        }
+        return result.toString();
     }
 }
