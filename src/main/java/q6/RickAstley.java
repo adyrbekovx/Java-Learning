@@ -31,13 +31,13 @@ public class RickAstley {
                       " Never gonna say goodbye " +
                       " Never gonna tell a lie and hurt you ";
 
-        String[] words = song.toLowerCase().split("[ ]+");
+        String[] words = song.toLowerCase().split(" ");
 
         for (String word: words) {
             if (word.isEmpty()) {
                 continue;           // Пропускаем пустые строки!
             }
-            
+
             Integer count = text.get(word);
 
             if (count == null) {

@@ -2,7 +2,7 @@ package q7;
 
 import java.util.Objects;
 
-public class SimpleHashMap {
+public class CustomHashMap {
 
     private static class Node {
         Node next;
@@ -20,7 +20,7 @@ public class SimpleHashMap {
     private int size;
     private Node[] buckets;
 
-    public SimpleHashMap() {
+    public CustomHashMap() {
         buckets = new Node[16];
     }
 
